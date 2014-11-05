@@ -1,20 +1,15 @@
 Rails.application.routes.draw do
-  get 'users/new'
 
   root 'static_pages#home'
 
-  # get 'static_pages/help'
-  # would map to  /static_page/help
-  # using route
-  # get 'help' => 'static_pages#help'
-  # so we can use URL /help in place of
-  # we can use help_path which maps to '/help'
-  # and help_url that maps to 'http://www.oursite.com/help'
+  get    'help' => 'static_pages#help'
+  get    'about'   => 'static_pages#about'
+  get    'contact' => 'static_pages#contact'
+  get    'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
 
-  get 'help' => 'static_pages#help'
-  get 'about'   => 'static_pages#about'
-  get 'contact' => 'static_pages#contact'
-  get 'signup'  => 'users#new'
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
